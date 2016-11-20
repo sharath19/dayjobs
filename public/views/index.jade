@@ -7,10 +7,11 @@ html(ng-app="dayJobs")
             .container
                 .row
                     .col-xs-12.col-sm-12
-                        form
+                         form(action="/login" method="POST")
                             .form-group
-                                label Job title
-                                    input(type="text" id="jobtitle" ng-model="form.jobtitle")
-                                label Location
-                                    input(type="text" id="location" ng-model="form.location")
-                                button.btn.btn-success search
+                                label
+                                    input(type="text" ng-model="user.firstname" required)
+                            .form-group
+                                label
+                                    input(type="text" ng-model="user.lastname" require)
+                                button.btn.btn-success(ng-click="submit()") submit
