@@ -1,0 +1,1 @@
+var dayJobs = angular.module("dayJobs",[]);

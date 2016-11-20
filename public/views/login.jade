@@ -1,0 +1,17 @@
+doctype html
+html(ng-app="dayJobs")
+    head
+        include partials/head.jade
+    body
+        .container
+            .row
+                .col-xs-12
+                    form
+                        .form-group
+                            label
+                                input(type="email" ng-model="user.email" required)
+                        .form-group
+                            label
+                                input(type="password" ng-model="user.password" require)
+                            button.btn.btn-success(ng-click="submit()") submit
+        

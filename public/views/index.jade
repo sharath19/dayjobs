@@ -1,0 +1,16 @@
+doctype html
+html(ng-app="dayJobs")
+    head
+        include partials/head.jade
+    body
+        section
+            .container
+                .row
+                    .col-xs-12.col-sm-12
+                        form
+                            .form-group
+                                label Job title
+                                    input(type="text" id="jobtitle" ng-model="form.jobtitle")
+                                label Location
+                                    input(type="text" id="location" ng-model="form.location")
+                                button.btn.btn-success search
