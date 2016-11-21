@@ -10,7 +10,7 @@ var app = express();
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.set("view engine","jade");
-
+app.set("views",__dirname+"/public/views")
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
@@ -26,10 +26,11 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "", function (err, databa
   console.log("Database connection ready");
 
   // Initialize the app.
-  var server = app.listen(process.env.PORT || 8080, function () {
+   var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
   });
+ 
 });
 
 
@@ -43,7 +44,7 @@ function handleError(res, reason, message, code) {
  *    POST: creates a new contact
  */
 app.get("/", function(req, res) {
-  res.render("views/index")
+  res.render("index")
 });
 
 
