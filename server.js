@@ -9,6 +9,8 @@ var CONTACTS_COLLECTION = "contacts";
 var app = express();
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
+app.set("view engine","jade");
+app.set("views",__dirname+"/public/jade")
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
