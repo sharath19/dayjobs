@@ -15,7 +15,7 @@ app.set("views",__dirname+"/public/views")
 var db;
 
 // Connect to the database before starting the application server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI || "", function (err, database) {
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
     console.log(err);
     process.exit(1);
@@ -31,7 +31,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "", function (err, databa
     console.log("App now running on port", port);
   });
  
-//});
+});
 
 
 function handleError(res, reason, message, code) {
@@ -63,13 +63,4 @@ app.post("/contacts", function(req, res) {
         res.status(201).json(doc.ops[0]);
       }
   });
-});
-
-app.get("/contacts/:id", function(req, res) {
-});
-
-app.put("/contacts/:id", function(req, res) {
-});
-
-app.delete("/contacts/:id", function(req, res) {
 });
