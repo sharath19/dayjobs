@@ -63,4 +63,7 @@ app.post("/contacts", function(req, res) {
         res.status(201).json(doc.ops[0]);
       }
   });
+  db.collection(CONTACTS_COLLECTION).find(function(err, docs){
+    res.json(docs)
+  })
 });
