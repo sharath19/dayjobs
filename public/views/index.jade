@@ -2,16 +2,21 @@ doctype html
 html(ng-app="dayJobs")
     head
         include partials/head.jade
-    body
+    body(ng-controller="LoginController")
         section
             .container
                 .row
                     .col-xs-12.col-sm-12
-                         form(action="/contacts" method="POST")
+                        form(role='form')
                             .form-group
-                                label
-                                    input(type="text" ng-model="user.firstname" required)
+                                label(for='firstname') First Name:
+                                    input#firstname.form-control(type='text', placeholder='first name', ng-model='user.firstname')
                             .form-group
+                                label(for='pwd') Last Name:
+                                    input#lastname.form-control(type='text', placeholder='last name ', ng-model='user.lastname')
+                                .checkbox
                                 label
-                                    input(type="text" ng-model="user.lastname" require)
-                                button.btn.btn-success(ng-click="submit()") submit
+                                    input(type='checkbox')
+                                    | Remember me
+                            .text-center
+                                button.btn.btn-default(type='submit', ng-click='submit()') Submit

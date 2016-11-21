@@ -1,7 +1,7 @@
 dayJobs.controller("loginController", function($scope, $http){
     
     var submit = function(user) {
-        $http.post("/login",user,function(data){
+        $http.post("/contacts",user,function(data){
             document.write(data)
         });
     }

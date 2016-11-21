@@ -31,7 +31,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "", function (err, databa
     console.log("App now running on port", port);
   });
  
-});
+//});
 
 
 function handleError(res, reason, message, code) {
@@ -48,20 +48,22 @@ app.get("/", function(req, res) {
 });
 
 
-app.get("/contacts", function(req, res) {
-});
-
 app.post("/contacts", function(req, res) {
-  req.params.user
-  db.collections("contacts").insert(req.params.user);
-  res.send(req.params.user);
+  var newContact = req.body;
+    newContact.createDate = new Date();
+  
+    if (!(req.body.firstName || req.body.lastName)) {
+      handleError(res, "Invalid user input", "Must provide a first or last name.", 400);
+    }
+  
+    db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
+      if (err) {
+        handleError(res, err.message, "Failed to create new contact.");
+      } else {
+        res.status(201).json(doc.ops[0]);
+      }
+  });
 });
-
-/*  "/contacts/:id"
- *    GET: find contact by id
- *    PUT: update contact by id
- *    DELETE: deletes contact by id
- */
 
 app.get("/contacts/:id", function(req, res) {
 });
