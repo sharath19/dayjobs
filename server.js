@@ -43,7 +43,7 @@ function handleError(res, reason, message, code) {
  *    POST: creates a new contact
  */
 app.get("/", function(req, res) {
-  res.render("jade/index")
+  res.render("views/index")
 });
 
 
