@@ -52,6 +52,9 @@ app.get("/contacts", function(req, res) {
 });
 
 app.post("/contacts", function(req, res) {
+  req.params.user
+  db.collections("contacts").insert(req.params.user);
+  res.send(req.params.user);
 });
 
 /*  "/contacts/:id"
