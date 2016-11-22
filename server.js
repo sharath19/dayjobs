@@ -44,7 +44,8 @@ function handleError(res, reason, message, code) {
  *    POST: creates a new contact
  */
 app.get("/", function(req, res) {
-  res.render("index")
+  db.collection(CONTACTS_COLLECTION).find()
+  res.render("index",{dbData : db.collection(CONTACTS_COLLECTION).find()} )
 });
 
 
@@ -60,9 +61,7 @@ app.post("/contacts", function(req, res) {
       if (err) {
         handleError(res, err.message, "Failed to create new contact.");
       } else {
-        db.collection(CONTACTS_COLLECTION).find(function(err, docs){
-          res.json(docs)
-        })
+        res.status(201)
       }
   });
   

@@ -4,4 +4,7 @@ html(ng-app="dayJobs")
         include partials/head.jade
     body(ng-controller="LoginController")
         section
-            div {{insertData.firstname}}
+            div(ng-repeat="user in users")
+                div {{user.firstname}}
+                br
+                div {{user.lastname}}

@@ -22,4 +22,6 @@ html(ng-app="dayJobs")
                                 button.btn.btn-default(type='submit', ng-click='submit()') Submit
                         
                         
-                        div {{insertData}}
+            div
+                for user in dbUsers
+                div= user.firstname
